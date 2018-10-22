@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../widgets/todo_list.dart';
+import '../models/todo_model.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({Key key, this.title}) : super(key: key);
@@ -10,39 +12,27 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int _counter = 0;
+  List<TodoModel> _todos = <TodoModel>[
+    TodoModel(1,'test1',false),
+    TodoModel(2,'test2',false),
+    TodoModel(3,'test3',false),
+  ];
 
-  void _incrementCounter() {
+  void addTodo(TodoModel todo) {
     setState(() {
-      _counter++;
+      _todos.add(todo);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(widget.title),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
       ),
-      body: new Center(
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            new Text(
-              'You have pushed the button this many times:',
-            ),
-            new Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: new FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: new Icon(Icons.add),
-      ),
+      body: TodoList(
+        todos: _todos
+      )
     );
   }
 }
