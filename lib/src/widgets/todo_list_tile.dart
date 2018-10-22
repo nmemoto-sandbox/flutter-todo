@@ -8,8 +8,15 @@ class TodoListTile extends StatelessWidget {
   final TodoModel todo;
 
   Widget build(context) {
-    return ListTile(
-        title: Text('${todo.name}')
+    return Column(
+      children: <Widget>[
+        ListTile(
+            title: Text('${todo.name}')
+        ),
+        Divider(
+          height: 8.0,
+        )
+      ],
     );
   }
 }
