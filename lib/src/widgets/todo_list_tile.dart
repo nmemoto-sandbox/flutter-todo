@@ -3,15 +3,21 @@ import '../models/todo_model.dart';
 
 class TodoListTile extends StatelessWidget {
 
-  TodoListTile({this.todo});
+  TodoListTile({Key key, this.todo, this.changeDone}): super(key: key);
+  TodoModel todo;
+  ValueChanged<TodoModel> changeDone;
 
-  final TodoModel todo;
+  void _onChanged(_) {
+    changeDone(todo);
+  }
 
   Widget build(context) {
     return Column(
       children: <Widget>[
-        ListTile(
-            title: Text('${todo.name}')
+        CheckboxListTile(
+            value: todo.done,
+            title: Text('${todo.name}'),
+            onChanged: _onChanged
         ),
         Divider(
           height: 8.0,
