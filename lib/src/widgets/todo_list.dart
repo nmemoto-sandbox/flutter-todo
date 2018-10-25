@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './todo_list_tile.dart';
 import '../models/todo_model.dart';
+import './todo_input.dart';
 
 class TodoList extends StatefulWidget {
 
@@ -28,13 +29,20 @@ class TodoListState extends State<TodoList> {
 
 
   Widget build(context) {
-    return ListView.builder(
-        itemCount: todos.length,
-        itemBuilder: (context, int index) {
-          return TodoListTile(
-            todo: todos[index],
-            changeDone: changeDone
-          );
-        });
+    return Column(
+        children: <Widget>[
+          TodoInput(),
+          Expanded(
+              child: new ListView.builder(
+                  itemCount: todos.length,
+                  itemBuilder: (context, int index) {
+                    return TodoListTile(
+                        todo: todos[index],
+                        changeDone: changeDone
+                    );
+                  })
+          )
+        ]
+    );
   }
 }
