@@ -4,19 +4,21 @@ class TodoInput extends StatelessWidget {
 
   Widget build(context) {
     return Container(
-      padding: EdgeInsets.all(5.0),
+      padding: EdgeInsets.all(15.0),
       child: Row(
         children: <Widget>[
           Expanded(
-            child: TextFormField()
+            child: TextFormField(
+                style: new TextStyle(
+                    fontSize: 25.0,
+                    height: 1.0,
+                    color: Colors.black
+                )
+            )
           ),
-          FlatButton(
-            child: Icon(
-              Icons.add,
-              color: Colors.white,
-            ),
-            color: Colors.blue,
-            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          FloatingActionButton(
+            child: Icon(Icons.add),
+            backgroundColor: Colors.blue,
             onPressed: () {
 
             },
