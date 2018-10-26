@@ -27,11 +27,24 @@ class TodoListState extends State<TodoList> {
     });
   }
 
+  void addTodo(String name){
+    TodoModel newTodo = TodoModel(
+        id: todos.length,
+        name: name,
+        done: false
+    );
+    setState(() {
+      todos.add(newTodo);
+    });
+  }
+
 
   Widget build(context) {
     return Column(
         children: <Widget>[
-          TodoInput(),
+          TodoInput(
+            addTodo: addTodo
+          ),
           Expanded(
               child: new ListView.builder(
                   itemCount: todos.length,
